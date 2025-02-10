@@ -36,7 +36,7 @@
         
          <!-- Fortschrittsbalken -->
          <div class="w-full bg-gray-200 rounded-full h-4 mb-8">
-            <div class="bg-blue-500 h-4 rounded-full transition-all duration-300" :style="`width: ${(currentStep / 2) * 100}%`"></div>
+            <div class="bg-blue-500 h-4 rounded-full transition-all duration-300" :style="`width: ${(currentStep / 4) * 100}%`"></div>
         </div>
         
         <!-- Schritt 1 -->
@@ -547,7 +547,17 @@
         <div x-show="currentStep === 2" class="step">
             <h2 class="text-2xl font-bold mb-6">Womit wird Ihr Gebäude aktuell beheizt?</h2>
             <div class="grid grid-cols-2 gap-6">
-                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200" @click="alert('Option gewählt: Öl')">
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 3; 
+                    }, 400); 
+                ">
                     <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512" height="512">
                         <g>
                             <path style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="&#10;&#9;&#9;M136.474,323.675c-46.359-13.822-80.136-56.531-80.136-107.076C56.337,114.832,168.883,20,168.883,20s42.373,36.052,75.119,87.209"/>
@@ -557,7 +567,17 @@
                     </svg>
                     <p class="font-medium">Öl</p>
                 </div>
-                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200" @click="alert('Option gewählt: Erdgas')">
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 3; 
+                    }, 400); 
+                ">
                     <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve" width="512" height="512">
                         <g id="Biofuel">
                             <rect x="140" y="100" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" width="160" height="80"/>
@@ -573,7 +593,17 @@
                     
                     <p class="font-medium">Erdgas</p>
                 </div>
-                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200" @click="alert('Option gewählt: Elektro-Nachtspeicher')">
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 3; 
+                    }, 400); 
+                ">
                     <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: block;" viewBox="0 0 2048 2048" width="512" height="512">
                         <path transform="translate(0,0)" fill="rgb(0,0,0)" d="M 0 0 L 622.193 0 L 826.636 0 L 1221 0 L 1425.11 0 L 2048 0 L 2048 2048 L 1384.8 2048 L 1155.19 2048 L 894.635 2048 L 661.915 2048 L 0 2048 L 0 0 z M 669.579 289.492 L 601.224 289.698 C 578.825 289.678 546.052 286.941 525.323 292.895 C 515.11 295.829 505.291 302.888 497.882 310.408 C 487.693 320.75 480.71 335.85 479.434 350.363 C 477.861 368.258 478.749 386.805 478.73 404.788 L 478.867 504.711 L 479.311 802.764 L 479.472 1435.42 C 479.83 1493.38 478.308 1551.5 479.586 1609.43 C 479.957 1626.25 485.919 1640.74 498.167 1652.4 C 508.224 1661.97 519.192 1667.21 532.953 1669.01 C 543.058 1670.33 553.832 1669.86 564.024 1669.92 L 616.757 1670.1 L 791.673 1670.15 L 1377.92 1669.82 L 1461.38 1670.09 C 1479.5 1670.17 1505.08 1672.82 1522.39 1668.01 C 1531.86 1665.38 1540.73 1659.12 1547.61 1652.19 C 1556.7 1643.03 1565.83 1627.89 1567.54 1614.9 C 1569.56 1599.59 1568.59 1583.16 1568.57 1567.69 L 1568.46 1489.92 L 1568.31 1221.94 L 1567.72 676.992 C 1567.7 572.842 1568.81 468.592 1567.62 364.455 C 1567.38 343.404 1563.12 325.65 1547.9 310.299 C 1537.88 300.197 1523.95 292.948 1509.81 291.091 C 1484.24 287.734 1446.03 289.992 1419.35 290.058 L 1246.04 290.095 L 669.579 289.492 z M 1425.11 0 C 1445.34 12.8633 1460.39 17.4993 1466.74 43.9433 C 1470.82 60.9377 1468.33 84.4463 1468.29 102.272 L 1468.66 177.126 C 1486.05 176.812 1503.52 176.273 1520.82 178.438 C 1557.86 183.073 1595.16 201.483 1622.05 227.246 C 1659.68 263.306 1677.8 306.609 1678.72 358.346 C 1680.5 459.314 1679.07 560.511 1679.09 661.501 L 1678.94 1233.55 L 1678.72 1506.27 L 1678.71 1578.84 C 1678.77 1597.45 1679.68 1616.53 1677 1634.98 C 1671.77 1670.91 1655.86 1702.22 1630.56 1728.22 C 1595.04 1764.72 1551.65 1782.23 1501.1 1782.68 C 1480.48 1782.87 1453.14 1784.57 1433.01 1781.87 C 1431.94 1781.72 1430.86 1781.61 1429.79 1781.47 C 1431.69 1826.69 1429.83 1872.68 1429.59 1917.95 C 1429.47 1942.23 1432.14 1978.71 1427.91 2001.86 C 1425.97 2012.45 1421.77 2020.83 1414.44 2028.75 C 1406.03 2037.82 1395.56 2042.47 1384.8 2048 L 2048 2048 L 2048 0 L 1425.11 0 z M 0 0 L 0 2048 L 661.915 2048 C 650.404 2041.05 638.922 2037.7 629.565 2027.27 C 623.35 2020.34 620.263 2013.73 618.708 2004.66 C 616.533 1991.98 617.295 1978.82 617.315 1966 L 617.407 1912.27 L 617.045 1829.84 C 616.992 1813.89 616.488 1797.82 617.445 1781.9 A 1614.32 1614.32 0 0 1 582.173 1782.62 C 520.018 1782.88 465.064 1771.05 419.561 1725.64 C 394.675 1700.8 375.56 1665.08 370.288 1630.18 C 367.293 1610.35 368.091 1589.88 368.197 1569.88 L 368.416 1500.33 L 368.493 1248.07 L 368.284 371.494 C 368.296 357.993 368.07 344.364 369.684 330.939 A 175.368 175.368 0 0 1 421.05 227.595 A 168.476 168.476 0 0 1 524.266 178.899 C 542.138 177.293 560.505 178.047 578.455 178.11 C 577.181 157.607 578.293 136.71 578.377 116.163 C 578.472 92.9717 574.928 56.9735 581.977 35.4158 C 589.09 13.6652 603.649 9.83848 621.453 0.400072 L 622.193 0 L 0 0 z M 826.636 0 C 827.177 0.381958 827.714 0.770351 828.259 1.14587 C 832.636 4.15862 837.815 6.12732 842.504 8.62223 C 856.645 16.1452 864.973 28.3878 868.129 43.9083 C 872.156 63.7141 869.658 98.4568 869.563 120.122 C 869.479 139.264 870.404 158.834 869.281 177.907 C 908.669 176.699 948.484 178.103 987.915 178.139 L 1178.09 177.996 C 1175.94 156.911 1177.8 134.1 1177.87 112.83 C 1177.94 91.9027 1175.6 66.3228 1179.14 45.9626 C 1180.68 37.1148 1183.57 28.9536 1189.26 21.899 C 1199.71 8.94169 1209.71 8.6954 1221 0 L 826.636 0 z M 943.272 1781.08 C 943.833 1789.95 943.2 1799.04 943.114 1807.93 L 943.035 1855.41 L 943.26 1929.81 C 943.433 1953.37 946.503 1981.3 940.243 2004.14 C 935.647 2020.91 922.834 2032.73 908.152 2041.17 C 904.284 2043.4 900.047 2044.84 896.198 2047.07 L 894.635 2048 L 1155.19 2048 C 1143.55 2039.95 1131.28 2037.08 1121.4 2025.85 C 1114.06 2017.51 1110.4 2008.5 1108.62 1997.59 C 1106.55 1984.88 1107.27 1971.57 1107.34 1958.73 L 1107.54 1904.86 L 1107.24 1825.8 C 1107.14 1811.12 1106.31 1796.28 1107.21 1781.64 C 1070.85 1783.16 1034.38 1782.36 997.992 1782.35 C 980.84 1782.35 959.903 1784.94 943.272 1781.08 z M 730.283 1781.36 C 731.224 1809.56 730.469 1837.98 730.448 1866.21 C 730.43 1890.21 731.292 1914.41 730.43 1938.37 C 745.457 1936.82 760.892 1937.69 775.999 1937.77 C 793.564 1937.86 811.251 1937.43 828.799 1938.01 C 828.137 1909.05 828.757 1879.99 828.673 1851.01 C 828.607 1828.22 827.623 1805.02 828.766 1782.28 L 765.997 1782.42 C 754.364 1782.42 741.708 1783.64 730.283 1781.36 z M 1220.92 1781.74 C 1218.35 1796.4 1220.01 1813.74 1220 1828.7 C 1219.97 1864.99 1220.57 1901.39 1219.83 1937.65 C 1251.71 1936.88 1283.75 1938.46 1315.68 1937.92 C 1318.13 1921.14 1316.25 1900.08 1316.23 1882.86 C 1316.19 1849.48 1316.94 1815.88 1315.77 1782.53 C 1287.12 1781.3 1247.83 1786.02 1220.92 1781.74 z M 1288.63 111.459 A 4568.43 4568.43 0 0 1 1288.51 177.614 C 1310.96 177.245 1333.44 178.612 1355.87 177.711 C 1355.78 155.85 1355.08 133.814 1355.8 111.975 C 1333.56 111.903 1310.78 112.854 1288.63 111.459 z M 691.01 110.468 C 692.72 130.036 693.102 158.376 691.123 177.788 C 712.226 176.503 733.625 178.368 754.799 177.899 C 757.891 173.393 756.381 120.715 756.478 111.195 C 735.65 111.169 712.759 113.117 692.15 110.595 C 691.77 110.549 691.39 110.51 691.01 110.468 z"/>
                         <path transform="translate(0,0)" fill="rgb(0,0,0)" d="M 600.816 493.426 C 618.717 492.277 636.823 492.663 654.758 492.635 L 740.778 492.709 L 980.162 492.935 L 1295.23 492.908 C 1340.84 493.038 1387.54 491.373 1433.03 493.279 C 1442.83 493.689 1452.33 494.631 1461.32 498.865 C 1474.41 505.029 1485.56 516.395 1490.12 530.246 C 1495.89 547.761 1493.11 593.309 1493.1 613.747 L 1493.09 708.839 A 32671.7 32671.7 0 0 1 1493.36 1087.78 A 12840.1 12840.1 0 0 1 1493.4 1326.69 C 1493.31 1354.59 1495.09 1382.82 1494.03 1410.65 C 1493.66 1420.36 1492.31 1430.52 1487.91 1439.28 C 1480.21 1454.59 1466.75 1464.64 1450.72 1469.91 C 1435.63 1472.42 1419.7 1471.64 1404.43 1471.64 L 1345.44 1471.64 L 1137.8 1471.94 L 793.385 1471.76 L 674.614 1471.89 C 652.443 1471.93 629.866 1472.92 607.765 1471.66 C 597.511 1471.08 587.598 1468.65 578.904 1462.95 C 568.423 1456.08 560.324 1444 557.973 1431.7 C 555.699 1419.81 556.542 1406.8 556.568 1394.72 L 556.652 1341.38 L 556.588 1139.93 L 556.764 739.295 L 556.511 616.445 C 556.418 593.579 555.522 570.395 556.461 547.556 C 556.93 536.171 558.36 526.083 565.144 516.505 C 573.32 504.964 586.905 495.888 600.816 493.426 z M 666.855 603.732 L 666.367 979.829 L 666.034 1215.99 A 6694.57 6694.57 0 0 0 666.127 1362.41 C 701.119 1361.19 736.321 1361.87 771.341 1361.8 L 961.207 1361.77 L 1382.56 1362.14 C 1381.27 1346.7 1382.13 1330.89 1382.33 1315.41 L 1382.88 1246.89 L 1382.32 1040.19 L 1382.3 769 L 1381.79 657.35 C 1381.74 639.55 1380.89 621.59 1381.79 603.818 L 887.889 603.82 L 742.61 603.789 C 718.881 603.87 689.866 605.748 666.855 603.732 z"/>
@@ -581,7 +611,17 @@
                         </svg>
                     <p class="font-medium">Elektro-Nachtspeicher</p>
                 </div>
-                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200" @click="alert('Option gewählt: Sonstiges')">
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 3; 
+                    }, 400); 
+                ">
                     <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" version="1.1" xmlns="http://www.w3.org/2000/svg" style="display: block;" viewBox="0 0 2048 2048" width="512" height="512">
                         <path transform="translate(0,0)" fill="rgb(0,0,0)" d="M 0 0 L 999.262 0 L 1052.74 0 L 2048 0 L 2048 2048 L 1589.75 2048 L 467.936 2048 L 0 2048 L 0 0 z M 811.158 724.5 L 618.18 724.962 A 3514.47 3514.47 0 0 0 572.012 725.174 C 561.022 725.282 549.52 726.117 538.641 724.373 L 538.312 1415.19 L 538.219 1771.17 C 538.197 1822.12 539.486 1873.22 538.654 1924.15 L 1240.5 1924.19 L 1414.94 1924.18 C 1446.57 1924.24 1478.31 1923.81 1509.91 1924.76 C 1508.83 1903.7 1510.11 1882.34 1510.09 1861.24 L 1509.77 1726.44 L 1509.51 1299.29 L 1510.03 887.406 C 1510.2 833.598 1507.04 777.806 1509.48 724.355 L 811.158 724.5 z M 0 0 L 0 2048 L 467.936 2048 C 464.283 2045.42 459.535 2043.98 455.482 2042.08 C 443.991 2036.68 433.644 2030.07 425.558 2020.13 C 416.42 2008.91 412.969 1996.38 412.154 1982.15 C 410.653 1955.96 411.567 1929.13 411.525 1902.88 L 411.728 1740.02 L 411.866 1214.2 L 411.343 871.541 L 411.216 770.448 C 411.165 755.587 409.57 740.103 410.981 725.354 C 395.708 726.35 378.219 725.918 364.214 719.026 C 351.021 712.532 340.66 701.171 336.134 687.108 A 66.3478 66.3478 0 0 1 333.216 671.49 C 331.923 652.554 333.363 632.454 333.377 613.376 C 333.394 590.228 331.615 565.439 334.229 542.471 C 335.044 535.316 336.789 528.591 340.082 522.143 C 351.167 500.446 389.635 466.309 407.883 447.824 L 531.445 323.955 C 565.216 289.984 598.389 255.443 632.4 221.699 C 644.471 209.724 656.102 197.076 668.686 185.659 C 674.645 180.252 682.427 173.188 690.247 170.834 C 719.652 161.982 769.112 165.966 801.172 165.841 C 805.332 153.187 809.624 140.673 815.542 128.703 A 231.792 231.792 0 0 1 946.468 13.5208 C 957.051 9.84571 992.29 4.09379 998.064 0.73771 C 998.469 0.501966 998.863 0.245903 999.262 0 L 0 0 z M 1052.74 0 C 1053.21 0.263697 1053.66 0.540008 1054.13 0.79109 C 1060.96 4.45741 1072.15 5.44935 1079.93 7.42524 A 306.73 306.73 0 0 1 1106.37 15.4783 C 1165.75 37.0741 1221.1 89.5587 1242.08 149.8 A 203.897 203.897 0 0 1 1246.76 165.254 A 2394.34 2394.34 0 0 0 1307.36 165.398 C 1322 165.338 1337.83 164.022 1352.22 167.121 C 1352.64 167.212 1353.07 167.28 1353.49 167.379 C 1358.63 168.591 1363.68 174.18 1367.44 177.702 C 1379.57 189.084 1390.84 201.378 1402.75 213 A 11269.9 11269.9 0 0 1 1532.5 341.338 C 1556.87 365.435 1580.91 389.901 1605.47 413.803 C 1635.89 443.409 1667.15 472.842 1696.23 503.762 A 94.6935 94.6935 0 0 1 1708.49 520.077 C 1713.01 527.708 1715.15 537.488 1716.17 546.232 C 1718.25 564.124 1718.56 659.631 1714.29 674.035 C 1709.76 689.336 1697.07 703.784 1682.99 711.045 C 1670.27 717.608 1651.9 719.217 1637.94 716.304 C 1638.6 748.108 1638.04 780.014 1637.98 811.831 L 1637.93 979.058 L 1638.26 1552.98 L 1638.24 1842.8 L 1638.41 1932.78 C 1638.46 1950.7 1639.34 1969.11 1637.89 1986.98 C 1636.62 2002.6 1631.86 2015.44 1620.94 2026.89 C 1610.34 2038.02 1601.88 2040.3 1589.75 2048 L 2048 2048 L 2048 0 L 1052.74 0 z M 1018.5 127.423 C 990.153 129.267 964.839 139.286 945.93 161.022 C 931.724 177.351 925.157 196.616 924.262 218.103 C 923.911 226.535 924.253 235.382 922.713 243.69 C 917.267 273.062 894.309 293.611 864.576 295.997 C 850.434 297.132 835.857 296.536 821.666 296.569 A 2456.17 2456.17 0 0 1 743.468 295.966 A 9602.58 9602.58 0 0 0 567.686 470.389 A 4017.12 4017.12 0 0 0 493.14 546.372 C 482.973 556.991 472.133 567.031 462.639 578.264 C 461.269 585.684 460.939 593.011 460.86 600.543 L 1032.5 600.322 L 1589.94 600.139 C 1588.87 593.037 1589.28 585.899 1589.47 578.746 L 1407.03 396.971 L 1328.39 318.777 C 1321.57 312.114 1315.42 304.604 1308.42 298.172 L 1307.05 297.929 C 1282.37 293.694 1234.97 296.149 1208.64 296.166 C 1194.57 296.176 1179.7 297.118 1166.07 292.964 C 1153.69 289.193 1142.27 281.331 1134.79 270.77 C 1109.52 235.125 1141.61 194.675 1093.01 151.807 A 94.7491 94.7491 0 0 0 1046.76 129.263 C 1037.38 127.525 1028.02 127.151 1018.5 127.423 z"/>
                         <path transform="translate(0,0)" fill="rgb(0,0,0)" d="M 1013.77 1673.36 C 1038.4 1671.83 1063.31 1677.46 1083.42 1692.21 C 1104.39 1707.6 1118.06 1731.99 1121.77 1757.57 C 1125.54 1783.62 1119.22 1808.52 1103.34 1829.54 C 1086.08 1852.4 1062.45 1864.9 1034.39 1868.62 A 98.6616 98.6616 0 0 1 965.467 1849.9 C 944.718 1834.82 929.842 1812.64 925.966 1787.12 C 922.039 1761.27 928.958 1732.32 944.75 1711.43 C 962.27 1688.24 985.355 1677.13 1013.77 1673.36 z"/>
@@ -592,6 +632,161 @@
                 </div>
             </div>
         </div>
+
+        <!-- Schritt 3 -->
+        <div x-show="currentStep === 3" class="step">
+            <h2 class="text-2xl font-bold mb-6">Sind Sie Eigentümer oder Mieter?</h2>
+            <div class="grid grid-cols-2 gap-6">
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 4; 
+                    }, 400); 
+                ">
+                    <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" id="svg2571" width="682.66669" height="682.66669" viewBox="0 0 682.66669 682.66669">
+                    <defs id="defs2575">
+                        <clipPath clipPathUnits="userSpaceOnUse" id="clipPath2585">
+                        <path d="M 0,512 H 512 V 0 H 0 Z" id="path2583"/>
+                        </clipPath>
+                    </defs>
+                    <mask id="custom"><rect id="bg" x="0" y="0" width="100%" height="100%" fill="white"/><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><path transform="matrix(1,0,0,1,90,60)" d="M 0,0 V 249 H -40 V 0 c 0,-33.084 26.916,-60 60,-60 h 292 c 26.072,0 48.304,16.722 56.56,40 H 20 C 8.972,-20 0,-11.028 0,0" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2589"/><path transform="matrix(1,0,0,1,265.2246,120.5)" d="m 0,0 -40,38 27.551,29 40,-38 z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2597"/><path transform="matrix(1,0,0,1,412,180)" d="M 0,0 C 0,11.046 8.954,20 20,20 31.046,20 40,11.046 40,0 40,-11.046 31.046,-20 20,-20 8.954,-20 0,-11.046 0,0" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2601"/><path transform="matrix(1,0,0,1,465.4453,321)" d="M 0,0 -209.445,191.072 -465.7,-42.704 -438.741,-72.255 -209.445,136.928 -59.352,0 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2605"/></g></mask><g mask="url(#custom)"><g id="g2577" transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)">
+                        <g id="g2579">
+                        <g id="g2581" clip-path="url(#clipPath2585)">
+                            <g id="g2587" transform="translate(90,60)">
+                            <path d="M 0,0 V 249 H -40 V 0 c 0,-33.084 26.916,-60 60,-60 h 292 c 26.072,0 48.304,16.722 56.56,40 H 20 C 8.972,-20 0,-11.028 0,0" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2589"/>
+                            </g>
+                            <g id="g2591" transform="translate(190,140)">
+                            <path d="m 0,0 -40,38 v 3 L 0,80 h 152.729 c 13.834,23.905 39.665,40 69.271,40 44.183,0 80,-35.817 80,-80 0,-44.183 -35.817,-80 -80,-80 -29.606,0 -55.437,16.095 -69.271,40 z" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path2593"/>
+                            </g>
+                            <g id="g2595" transform="translate(265.2246,120.5)">
+                            <path d="m 0,0 -40,38 27.551,29 40,-38 z" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2597"/>
+                            </g>
+                            <g id="g2599" transform="translate(412,180)">
+                            <path d="M 0,0 C 0,11.046 8.954,20 20,20 31.046,20 40,11.046 40,0 40,-11.046 31.046,-20 20,-20 8.954,-20 0,-11.046 0,0" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2601"/>
+                            </g>
+                            <g id="g2603" transform="translate(465.4453,321)">
+                            <path d="M 0,0 -209.445,191.072 -465.7,-42.704 -438.741,-72.255 -209.445,136.928 -59.352,0 Z" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path2605"/>
+                            </g>
+                        </g>
+                        </g>
+                    </g></g>
+                    </svg>
+                    <p class="font-medium">Eigentümer</p>
+                </div>
+                <div class="p-4 bg-blue-100 border rounded-lg text-center cursor-pointer hover:bg-blue-200"
+                x-data
+                @mousedown="$el.classList.add('pressed-instant')" 
+                @mouseup="
+                    $el.classList.remove('pressed-instant'); 
+                    $el.classList.add('pressed'); 
+                    setTimeout(() => {
+                        $el.classList.remove('pressed');
+                        currentStep = 4; 
+                    }, 400); 
+                ">
+                    <svg class="w-12 h-12 mx-auto mb-2" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" version="1.1" id="svg3318" width="682.66669" height="682.66669" viewBox="0 0 682.66669 682.66669">
+                    <defs id="defs3322">
+                        <clipPath clipPathUnits="userSpaceOnUse" id="clipPath3332">
+                        <path d="M 0,512 H 512 V 0 H 0 Z" id="path3330"/>
+                        </clipPath>
+                        <clipPath clipPathUnits="userSpaceOnUse" id="clipPath3368">
+                        <path d="M 0,512 H 512 V 0 H 0 Z" id="path3366"/>
+                        </clipPath>
+                    </defs>
+                    <mask id="custom"><rect id="bg" x="0" y="0" width="100%" height="100%" fill="white"/><g transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)"><path transform="matrix(1,0,0,1,120.6758,0)" d="M 0,0 -41.745,122.453 -79.606,109.547 -42.262,0 Z" style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path3376"/></g></mask><g mask="url(#custom)"><g id="g3324" transform="matrix(1.3333333,0,0,-1.3333333,0,682.66667)">
+                        <g id="g3326">
+                        <g id="g3328" clip-path="url(#clipPath3332)">
+                            <g id="g3334" transform="translate(484,297)">
+                            <path d="M 0,0 -228,189 -456,0" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3336"/>
+                            </g>
+                            <g id="g3338" transform="translate(70,250)">
+                            <path d="M 0,0 V 80" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3340"/>
+                            </g>
+                            <g id="g3342" transform="translate(442,330)">
+                            <path d="M 0,0 V -80" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3344"/>
+                            </g>
+                            <g id="g3346" transform="translate(237,196)">
+                            <path d="M 0,0 H -71 V -176 H 0" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3348"/>
+                            </g>
+                            <g id="g3350" transform="translate(459,196)">
+                            <path d="M 0,0 V -196" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3352"/>
+                            </g>
+                            <g id="g3354" transform="translate(512,196)">
+                            <path d="M 0,0 H -106" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3356"/>
+                            </g>
+                        </g>
+                        </g>
+                        <g id="g3358" transform="translate(237,116)">
+                        <path d="M 0,0 H -71" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3360"/>
+                        </g>
+                        <g id="g3362">
+                        <g id="g3364" clip-path="url(#clipPath3368)">
+                            <g id="g3370" transform="translate(20,116)">
+                            <path d="M 0,0 H 40 C 62.092,0 80,17.908 80,40 80,62.092 62.092,80 40,80 H 0 v -196" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3372"/>
+                            </g>
+                            <g id="g3374" transform="translate(120.6758)">
+                            <path d="M 0,0 -41.745,122.453 -79.606,109.547 -42.262,0 Z" style="fill:#000000;fill-opacity:1;fill-rule:nonzero;stroke:none" id="path3376"/>
+                            </g>
+                            <g id="g3378" transform="translate(361)">
+                            <path d="M 0,0 V 216" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3380"/>
+                            </g>
+                            <g id="g3382" transform="translate(284,216)">
+                            <path d="M 0,0 V -216" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3384"/>
+                            </g>
+                            <g id="g3386" transform="translate(286,208)">
+                            <path d="M 0,0 73,-201" style="fill:none;stroke:#000000;stroke-width:40;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:1" id="path3388"/>
+                            </g>
+                        </g>
+                        </g>
+                    </g></g>
+                    </svg>
+                    
+                    <p class="font-medium">Mieter</p>
+                </div>
+            </div>
+           
+        </div>
+
+         <!-- Kontaktformular -->
+         <div x-show="currentStep === 4" class="step">
+                <h2 class="text-2xl font-bold mb-6">Kontaktformular</h2>
+                <form action="#" method="POST" class="grid grid-cols-1 gap-6">
+                    <!-- Vorname -->
+                    <div>
+                        <label for="first_name" class="block text-gray-700 font-medium mb-2">Vorname</label>
+                        <input type="text" id="first_name" name="first_name" placeholder="Bitte Vornamen eingeben ..." 
+                            class="w-full p-4 bg-gray-100 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-500" required>
+                    </div>
+
+                    <!-- Nachname -->
+                    <div>
+                        <label for="last_name" class="block text-gray-700 font-medium mb-2">Nachname</label>
+                        <input type="text" id="last_name" name="last_name" placeholder="Bitte Nachnamen eingeben ..." 
+                            class="w-full p-4 bg-gray-100 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-500" required>
+                    </div>
+
+                    <!-- E-Mail-Adresse -->
+                    <div>
+                        <label for="email" class="block text-gray-700 font-medium mb-2">E-Mail-Adresse</label>
+                        <input type="email" id="email" name="email" placeholder="Bitte E-Mail-Adresse eingeben ..." 
+                            class="w-full p-4 bg-gray-100 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 text-gray-800 placeholder-gray-500" required>
+                    </div>
+
+                    <!-- Senden-Button -->
+                    <div>
+                        <button type="submit" 
+                            class="w-full bg-blue-500 text-white font-medium p-4 rounded-lg hover:bg-blue-600 transition duration-300">
+                            Absenden
+                        </button>
+                    </div>
+                </form>
+         </div>
+        
 
         <div class="mt-8">
             <button class="px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600" @click="currentStep--" :disabled="currentStep === 1">Zurück</button>
